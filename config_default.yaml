@@ -1,0 +1,186 @@
+# Wandb Analysis Summary Tool - Default Configuration
+# Copy this file to wandb_summary_config.yaml and modify as needed
+
+# AI Model Configuration
+ai_model:
+  # Ollama settings
+  ollama_url: "http://localhost:11434"
+  default_model: "llama3.2:8b"
+  temperature: 0.3
+  top_p: 0.9
+  max_tokens: 2000
+  timeout: 120
+  
+  # Alternative models (if Ollama is not available)
+  fallback_models:
+    - "llama3.2"
+    - "llama3.1"
+    - "mistral"
+    - "codellama"
+    - "phi3"
+  
+  # Analysis types and their specific prompts
+  analysis_types:
+    comprehensive: "comprehensive_analysis"
+    performance: "performance_analysis"
+    optimization: "optimization_analysis"
+    debugging: "debugging_analysis"
+    comparison: "run_comparison"
+
+# Output Configuration
+output:
+  # Base output directory
+  base_dir: "wandb_summary"
+  
+  # Subdirectories
+  data_dir: "data"
+  analysis_dir: "analysis"
+  visualizations_dir: "visualizations"
+  reports_dir: "reports"
+  plots_dir: "plots"
+  interactive_dir: "interactive"
+  
+  # File naming patterns
+  timestamp_format: "%Y%m%d_%H%M%S"
+  run_summary_filename: "runs_summary.csv"
+  analysis_filename_pattern: "analysis_{type}_{timestamp}.json"
+  report_filename_pattern: "wandb_analysis_report_{timestamp}.{ext}"
+
+# Visualization Configuration
+visualization:
+  # Plot settings
+  figure_size: [16, 12]
+  dpi: 300
+  style: "seaborn-v0_8"
+  color_palette: "husl"
+  
+  # Chart types to generate
+  generate_overview: true
+  generate_performance: true
+  generate_config_analysis: true
+  generate_timeline: true
+  generate_statistics: true
+  generate_interactive: true
+  
+  # Interactive dashboard settings
+  interactive_height: 1200
+  interactive_width: 1200
+  
+  # Specific visualization settings
+  max_runs_for_comparison: 20
+  max_metrics_to_plot: 5
+  max_config_params_to_show: 10
+
+# Report Configuration
+report:
+  # Report types to generate
+  generate_html: true
+  generate_markdown: true
+  generate_pdf: false  # Future feature
+  
+  # Report content
+  include_executive_summary: true
+  include_key_metrics: true
+  include_ai_insights: true
+  include_visualizations: true
+  include_recommendations: true
+  include_detailed_analysis: true
+  
+  # Report styling
+  html_template: "default"
+  css_theme: "modern"
+  include_toc: true
+  
+  # Report metadata
+  company_name: "Your Company"
+  report_title: "Wandb Analysis Report"
+  report_subtitle: "AI-Powered Experiment Analysis"
+  
+  # Custom branding
+  logo_path: null
+  custom_css: null
+
+# Analysis Configuration
+analysis:
+  # Run processing
+  max_runs_to_process: 1000
+  default_limit: 50
+  quick_analysis_limit: 10
+  
+  # Metrics to focus on
+  priority_metrics:
+    - "accuracy"
+    - "loss"
+    - "f1_score"
+    - "precision"
+    - "recall"
+    - "training_time"
+    - "inference_time"
+    - "model_size"
+  
+  # Configuration parameters to track
+  important_configs:
+    - "learning_rate"
+    - "batch_size"
+    - "epochs"
+    - "model_type"
+    - "optimizer"
+    - "scheduler"
+    - "dropout"
+    - "weight_decay"
+  
+  # Analysis depth
+  extract_history: true
+  extract_configs: true
+  extract_summary: true
+  extract_metadata: true
+  
+  # Comparison settings
+  comparison_metrics:
+    - "accuracy"
+    - "loss"
+    - "training_time"
+  
+  # Filtering defaults
+  default_filters:
+    state: "finished"
+
+# Logging Configuration
+logging:
+  # Logging level
+  log_level: "INFO"
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # File logging
+  log_to_file: true
+  log_file: "wandb_analysis.log"
+  
+  # Console output
+  verbose: true
+  show_progress: true
+  
+  # Debug settings
+  debug_mode: false
+  save_intermediate_results: false
+
+# Wandb Configuration
+wandb:
+  # API settings
+  api_timeout: 30
+  max_retries: 3
+  retry_delay: 1
+  
+  # Data extraction
+  extract_files: false
+  extract_artifacts: false
+  extract_system_metrics: true
+  
+  # Rate limiting
+  requests_per_minute: 60
+  batch_size: 10
+
+# Custom settings (add your own settings here)
+custom_settings:
+  # Example custom settings
+  # custom_setting_1: "value1"
+  # custom_setting_2: "value2" 
